@@ -9,6 +9,13 @@ body {
   height: 100%;
 }
 
+@media screen and (max-width: 891px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .sideBar {
   display: flex;
   flex-direction: column;
