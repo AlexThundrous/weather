@@ -1,0 +1,92 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .current {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    margin-top: 10%;
+    
+  }
+  
+  .weather-icon {
+    width: 20vh;
+    height: 20vh;
+    max-width: 100%;
+  }
+  
+  .basic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .degree {
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .temperature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10%;
+    justify-content: center;
+  }
+  
+  .Feels-like {
+    margin-top: 0;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .number {
+    font-weight: bold;
+  }
+  
+  .others {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .condition {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .humidity {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  h1 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  

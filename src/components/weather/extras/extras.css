@@ -1,0 +1,85 @@
+.cards .MuiGrid-item {
+  width: 280px;
+  height: 280px;
+  margin-bottom: 10px;
+}
+
+.cards .MuiCard-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(217, 250, 253, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.cards .MuiCard-root span {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.cards .MuiCard-root h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cards .MuiCard-root h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.cards > div {
+  flex: 0 0 30%;
+}
+
+.UV {
+  margin: 20px;
+}
+
+.winddir {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold; /* Added font-weight to make winddir slightly bold */
+}
+
+.wind,
+.vis {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.Humidity .humid {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.astro .sunrise,
+.astro .sunset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aqi {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.extras {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 15px; /* Adjusted padding to move the text slightly to the left */
+  overflow: hidden;
+  
+}
