@@ -22,7 +22,7 @@ class ForecastAPI extends React.Component {
   currentForecast = async (search, latitude, longitude) => {
     try {
       const resp = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${search}&days=7&aqi=no&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${search}&days=7&aqi=no&alerts=no`
       );
       if (resp.ok) {
         const weather = await resp.json();
@@ -31,7 +31,7 @@ class ForecastAPI extends React.Component {
         });
       } else {
         const resp2 = await fetch(
-          `http://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`
+          `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`
         );
         const weather = await resp2.json();
         this.setState({

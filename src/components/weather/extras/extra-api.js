@@ -30,7 +30,7 @@ class ExtraApi extends React.Component {
   currentWeather = async (search, longitude, latitude) => {
     try {
       const resp = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${search}&days=1&aqi=yes&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${search}&days=1&aqi=yes&alerts=no`
       );
       if (resp.ok) {
         const weather = await resp.json();
@@ -49,7 +49,7 @@ class ExtraApi extends React.Component {
         });
       } else {
         const resp2 = await fetch(
-          `http://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${latitude},${longitude}&days=1&aqi=yes&alerts=no`
+          `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${latitude},${longitude}&days=1&aqi=yes&alerts=no`
         );
         const weather = await resp2.json();
         let airquality;

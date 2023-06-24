@@ -24,10 +24,10 @@ class SearchApi extends Component {
       let url;
       if (searchfield.trim() === '') {
         // Fetch top cities if search field is empty
-        url = 'http://dataservice.accuweather.com/locations/v1/topcities/50?apikey=QiIeQlIz1YVcGP7OvuOcPWEXzHxy2JNc';
+        url = 'https://dataservice.accuweather.com/locations/v1/topcities/50?apikey=QiIeQlIz1YVcGP7OvuOcPWEXzHxy2JNc';
       } else {
         // Fetch locations based on search field value
-        url = `http://api.weatherapi.com/v1/search.json?key=820087a8ca4840f2b6674100232206&q=${searchfield}`;
+        url = `https://api.weatherapi.com/v1/search.json?key=820087a8ca4840f2b6674100232206&q=${searchfield}`;
       }
 
       const response = await fetch(url);
