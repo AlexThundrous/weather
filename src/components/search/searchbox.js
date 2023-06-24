@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Searchbox = ({ searchfield, searchChange, locations, search, searchClick }) => {
+
+  const [inputValue, setInputValue] = useState('');
+  
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault(); // Prevent form submission
-      searchChange(event.target.value);
+      searchChange(inputValue);
     }
   };
 
   const handleSearchClick = () => {
-    searchChange(search);
+    searchChange(inputValue);
+  };
+
+  const handleInputChange = (event, value) => {
+    setInputValue(value);
   };
 
   const getOptionLabel = (option) => {
     if (search.trim() === '') {
-      return `${option.LocalizedName}, ${option.Country.LocalizedName}`;
+      return option ? `${option?.LocalizedName || ''}, ${option?.Country?.LocalizedName || ''}` : '';
     } else {
-      return `${option.name}, ${option.country}`;
+      return option ? `${option?.name || ''}, ${option?.country || ''}` : '';
     }
   };
-
+  
   return (
     <div className="searchbox">
       <Autocomplete
@@ -32,6 +39,8 @@ const Searchbox = ({ searchfield, searchChange, locations, search, searchClick }
         disablePortal
         options={locations}
         getOptionLabel={getOptionLabel}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
         sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField
