@@ -57,7 +57,10 @@ const App = () => {
           search={searchfield}
           searchClick={(event) => onSearchChange(event)}
         />
-        {!loading && (
+        {loading ? 
+        <div className="loading-container">
+        <div className="loader"></div>
+        <div className = "loading"> Loading...</div> </div>: (
           <CurrentApi
             search={searchfield}
             latitude={latitude}
