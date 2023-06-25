@@ -95,3 +95,14 @@
   overflow: hidden;
   
 }
+
+.wind-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info {
+  color: rgb(135, 160, 217);
+  text-align: left !important;
+}
