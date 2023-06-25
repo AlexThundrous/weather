@@ -31,8 +31,8 @@ const App = () => {
         setLatitude(position.coords.latitude);
         setLongitude(position.coords.longitude);
         setSearchfield(`${position.coords.latitude},${position.coords.longitude}`);
-        await getData(); //get IP prehand since it takes a bit of time to get IP
         setLoading(false);
+        await getData();
       } catch (error) {
         await getData();
         setLoading(false);
