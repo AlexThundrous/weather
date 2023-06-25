@@ -10,7 +10,7 @@ class ForecastAPI extends React.Component {
   }
 
   componentDidMount() {
-    this.currentForecast(this.props.search, this.props.latitude, this.props.longitude);
+    this.currentForecast(this.props.search, this.props.latitude, this.props.longitude, this.props.ip);
   }
 
   componentDidUpdate(prevProps) {
@@ -19,7 +19,7 @@ class ForecastAPI extends React.Component {
     }
   }
 
-  currentForecast = async (search, latitude, longitude) => {
+  currentForecast = async (search, latitude, longitude, ip) => {
     try {
       const resp = await fetch(
         `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${search}&days=7&aqi=no&alerts=no`
@@ -33,10 +33,18 @@ class ForecastAPI extends React.Component {
         const resp2 = await fetch(
           `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${latitude},${longitude}&days=7&aqi=no&alerts=no`
         );
+        if (resp2.ok) {
         const weather = await resp2.json();
         this.setState({
           forecast: weather.forecast.forecastday
-        });
+        }); }
+        else {
+          const resp3 = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${ip}&days=7&aqi=no&alerts=no`)
+          const weather = await resp3.json();
+        this.setState({
+          forecast: weather.forecast.forecastday
+        }); 
+        }
       }
     } catch (err) {
       console.error(err);

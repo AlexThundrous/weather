@@ -42,7 +42,7 @@ const Current = ({ temperature, feelslike, text, icon, humidity, name, country, 
             <div className="humidity"> <img width="48" height="48" src={rainGif} alt="hygrometer" /> &nbsp; <strong> Rain - {humidity}%</strong></div>
           </div>
         </Container>
-        <h1> {name}, {country} </h1>
+        <Typography><h1> {name}, {country} </h1> </Typography>
       </div>
     </React.Fragment>
   );

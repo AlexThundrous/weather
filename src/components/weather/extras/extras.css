@@ -4,9 +4,21 @@
   margin-bottom: 10px;
 }
 
+.card-item {
+  min-width: 300px !important;
+  min-height: 300px !important;
+}
+
+@media (max-width: 518px) {
+  .card-item {
+    flex-basis: 50%;
+  }
+}
+
 .cards .MuiCard-root {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background-color: rgba(217, 250, 253, 0.9);

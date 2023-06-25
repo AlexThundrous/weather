@@ -18,7 +18,7 @@ class ExtraApi extends React.Component {
   }
 
   componentDidMount() {
-    this.currentWeather(this.props.search, this.props.latitude, this.props.longitude);
+    this.currentWeather(this.props.search, this.props.latitude, this.props.longitude, this.props.ip);
   }
 
   componentDidUpdate(prevProps) {
@@ -27,7 +27,7 @@ class ExtraApi extends React.Component {
     }
   }
 
-  currentWeather = async (search, longitude, latitude) => {
+  currentWeather = async (search, longitude, latitude,ip) => {
     try {
       const resp = await fetch(
         `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${search}&days=1&aqi=yes&alerts=no`
@@ -44,22 +44,21 @@ class ExtraApi extends React.Component {
           sunrise: weather.forecast.forecastday[0].astro.sunrise,
           sunset: weather.forecast.forecastday[0].astro.sunset,
           humidity: weather.current.humidity,
-          aqi: airquality.status,
           aqi_no: airquality.data.aqi,
         });
       } else {
         const resp2 = await fetch(
           `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${latitude},${longitude}&days=1&aqi=yes&alerts=no`
         );
+        if (resp2.ok) {
         const weather = await resp2.json();
         let airquality;
         const resp4 = await fetch(`https://api.waqi.info/feed/${latitude},${longitude}/?token=04d5e2b994532c89107760b677b5e2820ee1afc3`);
-        if (resp4.ok) {     
-          airquality = await resp4.json();
-        } else {
+        airquality = await resp4.json();
+        if (airquality.status === "error") {     
           const resp5 = await fetch(`https://api.waqi.info/feed/here/?token=04d5e2b994532c89107760b677b5e2820ee1afc3`);
           airquality = await resp5.json();
-        }
+        } 
         this.setState({
           uv: weather.current.uv,
           wind: weather.current.wind_kph,
@@ -68,9 +67,31 @@ class ExtraApi extends React.Component {
           sunrise: weather.forecast.forecastday[0].astro.sunrise,
           sunset: weather.forecast.forecastday[0].astro.sunset,
           humidity: weather.current.humidity,
-          aqi: airquality.status,
+          aqi_no: airquality.data.aqi,
+        }); }
+        else {
+          const resp3 = await fetch(
+            `https://api.weatherapi.com/v1/forecast.json?key=820087a8ca4840f2b6674100232206&q=${ip}&days=1&aqi=yes&alerts=no`
+          );
+          const weather = await resp3.json();
+        let airquality;
+        const resp4 = await fetch(`https://api.waqi.info/feed/${ip}/?token=04d5e2b994532c89107760b677b5e2820ee1afc3`);
+        airquality = await resp4.json();
+        if (airquality.status === "error") {     
+          const resp5 = await fetch(`https://api.waqi.info/feed/here/?token=04d5e2b994532c89107760b677b5e2820ee1afc3`);
+          airquality = await resp5.json();
+        } 
+        this.setState({
+          uv: weather.current.uv,
+          wind: weather.current.wind_kph,
+          winddir: weather.current.wind_dir,
+          vis: weather.current.vis_km,
+          sunrise: weather.forecast.forecastday[0].astro.sunrise,
+          sunset: weather.forecast.forecastday[0].astro.sunset,
+          humidity: weather.current.humidity,
           aqi_no: airquality.data.aqi,
         });
+        }
       }
     } catch (err) {
       console.error(err);
@@ -88,7 +109,6 @@ class ExtraApi extends React.Component {
           humidity={this.state.humidity}
           sunrise={this.state.sunrise}
           sunset={this.state.sunset}
-          aqi={this.state.aqi}
           aqi_no={this.state.aqi_no}
         />
       </div>

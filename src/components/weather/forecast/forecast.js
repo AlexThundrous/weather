@@ -10,7 +10,6 @@ const Forecast = ({ forecast }) => {
   }
 
   const CardArray = forecast.map((item, i) => {
-    console.log(item); // Check the value of each item in the forecast array
 
     return (
       <ForeCastCard
